@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}프로필 - Django 프로젝트{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/accounts/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="card profile-card">
+    <h1>사용자 프로필</h1>
+    
+    <div style="margin-top: 20px;">
+        <h2>안녕하세요, {{ user.username }}님!</h2>
+        <p><strong>이메일:</strong> {{ user.email|default:"설정되지 않음" }}</p>
+        <p><strong>가입일:</strong> {{ user.date_joined|date:"Y년 m월 d일" }}</p>
+        <p><strong>마지막 로그인:</strong> {{ user.last_login|date:"Y년 m월 d일 H:i" }}</p>
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <a href="{% url 'accounts:logout' %}" class="btn btn-secondary">로그아웃</a>
+        <a href="{% url 'home' %}" class="btn">홈으로 돌아가기</a>
+    </div>
+</div>
+{% endblock %} 

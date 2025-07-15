@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard UI{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <div class="circle"></div>
+            <div class="pill"></div>
+        </div>
+        <div class="header-center">
+            <div class="search-bar"></div>
+        </div>
+        <div class="header-right">
+            <div class="pill"></div>
+            <div class="pill"></div>
+            <div class="pill"></div>
+            <div class="pill"></div>
+        </div>
+    </header>
+
+    <!-- Grid -->
+    <main class="dashboard-grid">
+        <!-- Card 1 -->
+        <div class="card card-large">
+            <div class="content-box">
+                <div class="placeholder pill-shape top"></div>
+                <div class="placeholder circle-shape bottom"></div>
+            </div>
+            <div class="progress-bar">
+                <div class="placeholder circle-shape left"></div>
+                <div class="placeholder circle-shape right"></div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card card-medium">
+            <div class="header">
+                <div class="placeholder text-box-outlined"></div>
+                <div class="placeholder circle-shape"></div>
+            </div>
+            <div class="line"></div>
+            <div class="icon-row">
+                <div class="placeholder circle-shape small"></div>
+                <div class="placeholder circle-shape small"></div>
+                <div class="placeholder circle-shape small"></div>
+                <div class="placeholder circle-shape small"></div>
+                <div class="placeholder circle-shape small"></div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card card-small">
+            <div class="placeholder pill-shape"></div>
+            <div class="line large"></div>
+            <div class="line medium"></div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="card card-medium">
+             <div class="header">
+                <div class="placeholder text-box-outlined"></div>
+                <div class="placeholder circle-shape"></div>
+            </div>
+            <div class="line long"></div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card card-small">
+            <div class="header">
+               <div class="placeholder text-box-outlined"></div>
+            </div>
+            <div class="line large"></div>
+            <div class="line medium"></div>
+            <div class="line small"></div>
+            <div class="toggle">
+                <div class="toggle-circle"></div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card card-medium">
+            <div class="header">
+                <div class="placeholder text-box-outlined"></div>
+                <div class="placeholder circle-shape"></div>
+            </div>
+            <div class="line medium"></div>
+            <div class="line short"></div>
+            <div class="stacked-cards">
+                <div class="stacked-card card1"></div>
+                <div class="stacked-card card2"></div>
+                <div class="stacked-card card3"></div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %} 
