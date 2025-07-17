@@ -123,15 +123,6 @@ body {
     border-radius: 20px;
 }
 
-.header-top .search-bar {
-    width: 40%;
-    flex-grow: 0;
-    flex-shrink: 0;
-    min-width: 120px;
-    height: 40px;
-    background-color: #6e6e6e;
-    border-radius: 20px;
-}
 .header-top-right {
     display: flex;
     gap: 12px;
@@ -368,4 +359,170 @@ body {
     right: 15px;
     bottom: 15px;
     z-index: 1;
+}
+
+.searchbar-container {
+  position: relative;
+  --size-button: 40px;
+  color: white;
+}
+
+.searchbar-container .input {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  /* 기존 스타일 유지 */
+  padding-left: var(--size-button);
+  height: var(--size-button);
+  font-size: 15px;
+  color: #fff;
+  outline: none;
+  width: var(--size-button);
+  transition: all ease 0.3s;
+  box-shadow: 1.5px 1.5px 3px #0e0e0e, -1.5px -1.5px 3px rgb(95 94 94 / 25%), inset 0px 0px 0px #0e0e0e, inset 0px -0px 0px #5f5e5e;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.searchbar-container .input:focus,
+.searchbar-container .input:not(:invalid) {
+  width: 400px;
+  cursor: text;
+  box-shadow: 0px 0px 0px #0e0e0e, 0px 0px 0px rgb(95 94 94 / 25%), inset 1.5px 1.5px 3px #0e0e0e, inset -1.5px -1.5px 3px #5f5e5e;
+}
+
+.searchbar-container .input:focus + .icon,
+.searchbar-container .input:not(:invalid) + .icon {
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.searchbar-container .input:not(:focus):not(:valid)::placeholder {
+  color: transparent;
+}
+
+.searchbar-container .input:not(:focus):not(:valid) {
+  width: var(--size-button);
+  height: var(--size-button);
+  padding-left: 0;
+  border-radius: 50%;
+}
+
+.searchbar-container .icon {
+  position: absolute;
+  width: var(--size-button);
+  height: var(--size-button);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s, top 0.3s, transform 0.3s;
+}
+
+.searchbar-container .icon svg {
+  width: 60%;
+  height: 60%;
+  display: block;
+  stroke: #fff;
+}
+
+.title {
+  width: 100px;
+  height: 40px;
+  background: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.hamburger {
+  cursor: pointer;
+}
+
+.hamburger input {
+  display: none;
+}
+
+.hamburger svg {
+  /* The size of the SVG defines the overall size */
+  height: 3em;
+  /* Define the transition for transforming the SVG */
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+  fill: none;
+  stroke: white;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+  /* Define the transition for transforming the Stroke */
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+  stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+  transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+  stroke-dasharray: 20 300;
+  stroke-dashoffset: -32.42;
+}
+
+.hamburger.circle {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hamburger.circle svg {
+  height: 60%;
+}
+
+.cart {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  border-style: solid;
+}
+.cart .icon {
+  width: 50%;
+  height: 50%;
+  display: block;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
