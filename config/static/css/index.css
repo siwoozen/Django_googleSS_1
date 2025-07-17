@@ -1,84 +1,229 @@
-/* 기본 스타일 및 컨테이너 */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: #3e3e3e;
+    background-image: url('../images/pexels-lucas-andreatta-300287035-13347683.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: sans-serif;
 }
 
 .container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1600px;
     padding: 40px;
+    max-height: 850px;
+    height: auto;
+    overflow: hidden;
 }
 
 .dashboard {
-    background-color: #4a4a4a;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-radius: 20px;
-    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 8px 4px rgba(255, 255, 255, 0.2);
+    padding: 28px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+    max-height: 850px;
+    height: auto;
 }
 
-/* 헤더 스타일 */
+.dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.9),
+        transparent
+    );
+}
+
+.dashboard::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.9),
+        transparent,
+        rgba(255, 255, 255, 0.4)
+    );
+}
+
 .dashboard-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     gap: 20px;
     padding: 0 10px;
 }
 
-.header-left, .header-right {
+.header-top {
     display: flex;
     align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+.header-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.header-bottom .circle {
+    margin-right: 0;
+}
+.header-right {
+    display: flex;
     gap: 15px;
 }
 
-.header-left .pill { width: 40px; }
-.header-right .pill { width: 60px; }
-
-.header-center {
-    flex-grow: 1;
-}
-
-.search-bar {
-    width: 100%;
-    height: 30px;
+.header-bottom .circle, .header-top .circle {
+    width: 40px;
+    height: 40px;
     background-color: #6e6e6e;
-    border-radius: 15px;
+    border-radius: 50%;
 }
 
-/* 그리드 및 카드 스타일 */
+.header-bottom .pill, .header-right .pill {
+    height: 40px;
+    background-color: #6e6e6e;
+    border-radius: 20px;
+} 
+
+.header-bottom .pill { width: 40px; }
+.header-right .pill { width: 100px; }
+
+.header-top .pill {
+    width: 100px;
+    height: 40px;
+    background-color: #6e6e6e;
+    border-radius: 20px;
+}
+
+.header-top .search-bar {
+    width: 40%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    min-width: 120px;
+    height: 40px;
+    background-color: #6e6e6e;
+    border-radius: 20px;
+}
+.header-top-right {
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+}
+
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 20px;
+    grid-template-columns: 1.2fr 1.2fr 0.9fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 18px;
+}
+
+.card:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+}
+.card:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+.card:nth-of-type(3) {
+    grid-column: 2;
+    grid-row: 3;
+}
+.card:nth-of-type(4) {
+    grid-column: 3;
+    grid-row: 1;
+}
+.card:nth-of-type(5) {
+    grid-column: 3;
+    grid-row: 2;
+}
+.card:nth-of-type(6) {
+    grid-column: 3;
+    grid-row: 3;
 }
 
 .card {
-    background-color: #555555;
-    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 0 6px 3px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    position: relative;
-    overflow: hidden;
+    gap: 14px;
+    font-size: 1.1rem;
 }
 
-/* 그리드 아이템 배치 */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.8),
+        transparent
+    );
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.8),
+        transparent,
+        rgba(255, 255, 255, 0.3)
+    );
+}
+
 .card-large { grid-column: span 2; grid-row: span 2; }
 .card-medium { grid-column: span 2; }
 .card-small { grid-column: span 2; }
 
-
-/* 카드 내부 요소 스타일 */
 .placeholder {
     background-color: #6e6e6e;
 }
@@ -101,8 +246,8 @@ body {
 }
 
 .card .header .circle-shape {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 .line {
@@ -120,9 +265,6 @@ body {
     border-radius: 6px;
 }
 
-/* 개별 카드 커스텀 스타일 */
-
-/* Card 1 (Top-Left) */
 .card-large {
     justify-content: space-between;
 }
@@ -162,34 +304,31 @@ body {
 .progress-bar .circle-shape.left { left: 5px; }
 .progress-bar .circle-shape.right { right: 5px; }
 
-/* Card 2 (Top-Right) */
 .icon-row {
     display: flex;
     gap: 10px;
 }
 .icon-row .circle-shape.small {
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
 }
 
-/* Card 3 (Middle-Left) */
 .card-small .pill-shape {
-    height: 25px;
-    width: 80px;
+    height: 32px;
+    width: 110px;
 }
 
-/* Card 5 (Bottom-Left) */
 .toggle {
     align-self: flex-end;
-    width: 50px;
-    height: 26px;
+    width: 70px;
+    height: 36px;
     background-color: #6e6e6e;
     border-radius: 13px;
     position: relative;
 }
 .toggle-circle {
-    width: 20px;
-    height: 20px;
+    width: 28px;
+    height: 28px;
     background-color: #8e8e8e;
     border-radius: 50%;
     position: absolute;
@@ -197,19 +336,18 @@ body {
     right: 3px;
 }
 
-/* Card 6 (Bottom-Right) */
 .stacked-cards {
     position: absolute;
     right: -10px;
     bottom: -10px;
-    width: 100px;
-    height: 80px;
+    width: 130px;
+    height: 110px;
 }
 .stacked-card {
     position: absolute;
     border-radius: 15px;
-    width: 80px;
-    height: 60px;
+    width: 110px;
+    height: 80px;
 }
 .stacked-card.card1 {
     background-color: #8e8e8e;
@@ -231,17 +369,3 @@ body {
     bottom: 15px;
     z-index: 1;
 }
-
-/* 헤더의 작은 요소들 */
-.header-left .circle {
-    width: 20px;
-    height: 20px;
-    background-color: #6e6e6e;
-    border-radius: 50%;
-}
-
-.header-left .pill, .header-right .pill {
-    height: 20px;
-    background-color: #6e6e6e;
-    border-radius: 10px;
-} 
