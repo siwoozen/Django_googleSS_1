@@ -107,21 +107,36 @@ body {
     border-radius: 50%;
 }
 
-.header-bottom .pill, .header-right .pill {
-    height: 40px;
-    background-color: #6e6e6e;
-    border-radius: 20px;
-} 
-
-.header-bottom .pill { width: 40px; }
-.header-right .pill { width: 100px; }
-
-.header-top .pill {
-    width: 100px;
-    height: 40px;
-    background-color: #6e6e6e;
-    border-radius: 20px;
+/* 기존 pill 스타일에 글라스 효과 통합 */
+.header-top .pill,
+.header-bottom .pill,
+.header-right .pill {
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.05rem;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  border-style: solid;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.header-top .pill:hover,
+.header-bottom .pill:hover,
+.header-right .pill:hover {
+  background: rgba(255,255,255,0.12);
+  color: #222;
+}
+/* .pill 단독 스타일은 삭제 */
 
 .header-top-right {
     display: flex;

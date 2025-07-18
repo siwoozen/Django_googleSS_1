@@ -1,3 +1,14 @@
+body {
+    background-image: url("/static/images/pexels-lucas-andreatta-300287035-13347683.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    font-family: sans-serif;
+}
+
 /* 로그인 페이지 스타일 */
 .login-container {
     max-width: 400px;

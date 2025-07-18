@@ -1,37 +1,24 @@
-{% extends 'base.html' %}
 {% load static %}
-
-{% block title %}로그인 - Django 프로젝트{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
-{% endblock %}
-
-{% block content %}
+<link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
 <div class="login-container">
     <div class="card">
         <div class="login-header">
             <h1>로그인</h1>
         </div>
-        
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
                 <label for="username">아이디</label>
                 <input type="text" id="username" name="username" required>
             </div>
-            
             <div class="form-group">
                 <label for="password">비밀번호</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            
             <button type="submit" class="login-btn">로그인</button>
         </form>
-        
         <div class="register-link">
             <p>계정이 없으신가요? <a href="#">회원가입</a></p>
         </div>
     </div>
-</div>
-{% endblock %} 
+</div> 
