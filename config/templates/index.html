@@ -191,5 +191,66 @@
         </div>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const leftButton = document.querySelector('.arrow-container-left');
+        const rightButton = document.querySelector('.arrow-container-right');
+        const imageContainer = document.querySelector('.highlight-box');
+        const backgroundImageBlur = document.querySelector('.background-image-blur');
+        
+        let currentImage = document.querySelector('.highlight-image');
+        let isAnimating = false;
 
+        const imageList = JSON.parse('{{ image_list_json|escapejs }}');
+        const imagePathPrefix = '{{ MEDIA_URL }}images/';
+
+        function changeImage(direction) {
+            if (isAnimating || imageList.length <= 1) return;
+            isAnimating = true;
+
+            let newImageName;
+            const currentImageSrc = currentImage.src;
+            do {
+                const randomIndex = Math.floor(Math.random() * imageList.length);
+                newImageName = imageList[randomIndex];
+            } while (currentImageSrc.includes(newImageName));
+
+            const newImageSrc = imagePathPrefix + newImageName;
+            const newImage = document.createElement('img');
+            newImage.src = newImageSrc;
+            newImage.alt = 'Random Image';
+            newImage.classList.add('highlight-image');
+            
+            newImage.style.transform = `translateX(${direction === 'right' ? '100%' : '-100%'})`;
+            
+            imageContainer.appendChild(newImage);
+
+            requestAnimationFrame(() => {
+                currentImage.style.transform = `translateX(${direction === 'right' ? '-100%' : '100%'})`;
+                newImage.style.transform = 'translateX(0%)';
+                backgroundImageBlur.style.backgroundImage = `url('${newImageSrc}')`;
+            });
+
+            newImage.addEventListener('transitionend', () => {
+                if (currentImage && currentImage.parentNode) {
+                    currentImage.parentNode.removeChild(currentImage);
+                }
+                currentImage = newImage;
+                isAnimating = false;
+            }, { once: true });
+        }
+
+        if (rightButton) {
+            rightButton.addEventListener('click', () => {
+                changeImage('right');
+            });
+        }
+
+        if (leftButton) {
+            leftButton.addEventListener('click', () => {
+                changeImage('left');
+            });
+        }
+    });
+</script>
 </html>
