@@ -60,12 +60,29 @@
                 <!-- Large Card -->
                 <div class="card card-large">
                     <div class="content-box">
-                        <div class="placeholder pill-shape top"></div>
-                        <div class="placeholder circle-shape bottom"></div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="placeholder circle-shape left"></div>
-                        <div class="placeholder circle-shape right"></div>
+                        {% if random_image %}
+                            <div class="background-image-blur" style="background-image: url('{{ MEDIA_URL }}images/{{ random_image }}');"></div>
+                            <div class="highlight-box">
+                                <img src="{{ MEDIA_URL }}images/{{ random_image }}" alt="Random Image" class="highlight-image">
+                                <div class="placeholder pill-shape top">⭐ NEW</div>
+                                <button type="button" class="placeholder circle-shape bottom">
+                                    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="9" cy="21" r="1"></circle>
+                                        <circle cx="20" cy="21" r="1"></circle>
+                                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="placeholder circle-shape left"></div>
+                                <div class="placeholder circle-shape right"></div>
+                            </div>
+                        {% else %}
+                            <div class="highlight-box">
+                                <div class="placeholder pill-shape top"></div>
+                                <div class="placeholder circle-shape bottom"></div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
 
