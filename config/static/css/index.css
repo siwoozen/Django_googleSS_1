@@ -107,7 +107,6 @@ body {
     border-radius: 50%;
 }
 
-/* 기존 pill 스타일에 글라스 효과 통합 */
 .header-top .pill,
 .header-bottom .pill,
 .header-right .pill {
@@ -130,13 +129,13 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .header-top .pill:hover,
 .header-bottom .pill:hover,
 .header-right .pill:hover {
   background: rgba(255,255,255,0.12);
   color: #222;
 }
-/* .pill 단독 스타일은 삭제 */
 
 .header-top-right {
     display: flex;
@@ -281,6 +280,8 @@ body {
     position: relative;
     overflow: visible;
     min-height: 420px;
+    align-items: center;
+    justify-content: center;
 }
 
 .background-image-blur {
@@ -366,6 +367,7 @@ body {
     stroke-linejoin: round;
     display: block;
 }
+
 .progress-bar {
     height: 30px;
     background-color: rgba(255, 255, 255, 0.3);
@@ -379,14 +381,104 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    --color-background: #fff;
 }
+
 .progress-bar .circle-shape {
     position: static;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background-color: #ffffff;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.progress-bar .circle-shape.arrow-container-left:hover,
+.progress-bar .circle-shape.arrow-container-right:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-container-right .icon-arrow {
+    width: 40px;
+    position: relative;
+    transform: scale(0.8);
+    top: 2px;
+}
+
+.arrow-container-left .icon-arrow {
+    width: 40px;
+    position: relative;
+    transform: scale(0.8) scaleX(-1);
+    top: 2px;
+}
+
+.arrow-container-left #arrow-icon-one,
+.arrow-container-left #arrow-icon-two,
+.arrow-container-left #arrow-icon-three,
+.arrow-container-right #arrow-icon-one,
+.arrow-container-right #arrow-icon-two,
+.arrow-container-right #arrow-icon-three {
+    fill: #333;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(0%);
+}
+
+.arrow-container-left #arrow-icon-one,
+.arrow-container-left #arrow-icon-three,
+.arrow-container-right #arrow-icon-one,
+.arrow-container-right #arrow-icon-three {
+    opacity: 0;
+}
+
+.arrow-container-left #arrow-icon-two,
+.arrow-container-right #arrow-icon-two {
+    opacity: 1;
+}
+
+.arrow-container-left:hover #arrow-icon-one,
+.arrow-container-left:hover #arrow-icon-two,
+.arrow-container-left:hover #arrow-icon-three,
+.arrow-container-right:hover #arrow-icon-one,
+.arrow-container-right:hover #arrow-icon-two,
+.arrow-container-right:hover #arrow-icon-three {
+    opacity: 1;
+}
+
+.arrow-container-left:hover #arrow-icon-one,
+.arrow-container-right:hover #arrow-icon-one {
+    transform: translateX(-60%);
+    animation: color_anim 1s infinite 0.2s;
+}
+
+.arrow-container-left:hover #arrow-icon-two,
+.arrow-container-right:hover #arrow-icon-two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+}
+
+.arrow-container-left:hover #arrow-icon-three,
+.arrow-container-right:hover #arrow-icon-three {
+    transform: translateX(60%);
+    animation: color_anim 1s infinite 0.6s;
+}
+
+@keyframes color_anim {
+    0% {
+        fill: #333;
+    }
+    50% {
+        fill: var(--color-background);
+    }
+    100% {
+        fill: #333;
+    }
 }
 
 .icon-row {
@@ -466,7 +558,6 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.2);
-  /* 기존 스타일 유지 */
   padding-left: var(--size-button);
   height: var(--size-button);
   font-size: 15px;
@@ -548,9 +639,7 @@ body {
 }
 
 .hamburger svg {
-  /* The size of the SVG defines the overall size */
   height: 3em;
-  /* Define the transition for transforming the SVG */
   transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -560,7 +649,6 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 3;
-  /* Define the transition for transforming the Stroke */
   transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
               stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
