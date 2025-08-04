@@ -278,7 +278,7 @@ body {
     height: 10px;
     width: 100%;
     color: #ffffff;
-    font-size: 1em;
+    font-size: 1.3em;
     font-weight: bold;
     align-self: self-start;
 }
@@ -563,6 +563,8 @@ body {
 .icon-row {
     display: flex;
     gap: 10px;
+    align-items: end;
+    margin-top: auto;
 }
 .icon-row .circle-shape.small {
     width: 45px;
@@ -570,8 +572,15 @@ body {
 }
 
 .card-small .pill-shape {
-    height: 32px;
-    width: 110px;
+    width: fit-content;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+.card-small .line {
+    color: #fff;
+    font-size: 0.9em;
 }
 
 .stacked-cards {
@@ -688,7 +697,7 @@ body {
   justify-content: center;
   color: #111;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
 }
 
 .hamburger {
