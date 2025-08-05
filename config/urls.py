@@ -24,8 +24,11 @@ urlpatterns = [
     path('', views.home_view, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('accounts/', include('allauth.urls')), # allauth URL 설정 추가
 ]
 
-# 미디어 파일 서빙 (개발 환경에서만)
+# allauth URL 설정 추가 후 마이그레이션
+
+# 개발용 정적 파일 제공 설정
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
